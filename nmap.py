@@ -1,4 +1,5 @@
 
+
 host = input('Informe o HOST destino: ')
 port = input('Informe a Porta que deseja analisar: '
 

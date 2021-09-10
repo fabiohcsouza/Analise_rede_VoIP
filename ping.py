@@ -3,34 +3,30 @@ import subprocess
 import platform
 import time
 
+host = input('Informe o IP: ')
 
-print('#'*20)
-host = input('IP: ')
-time.sleep(1)
-print('-'*20)
-timeout = input('Packages: ')
-print('#'*20)
-
-
-def ping(host, timeout):
+def ping(portal):
     if platform.system().lower() == 'windows':
-        numFlag = '-n'
+        timeout_l = '/t'
+        size_l = '/l 160'
     else:
-        numFlag = '-c'
-    completedPing = subprocess.run(['ping', numFlag, '1', '-w', timeout, host],
+        timeout_c = '-c'
+
+    completedPing = subprocess.run(['ping', size_l ,timeout_l, host],
                                    stdout=subprocess.PIPE,    # Capture standard out
                                    stderr=subprocess.STDOUT)  # Capture standard error
-    resposta_replace:  = str(completedPing.stdout.replace('\\r\\n', ' ')
-    #resposta.split = resposta.replace(',')
-    print(resposta_replace)
+    resposta_replace = str(completedPing.stdout.replace('\\r\\n', ' ')
+    stdout = resposta_replace.stdout
+    
+    #resposta_replace.split = resposta_replace.replace(',')
 
-    # arquivo = open('report_ping.txt', 'a')
+    #arquivo = open('report_ping.txt', 'a')
 
     #arquivo.write(str(resposta.split(','))
 
-    return (completedPing.returncode == 0) and (b'TTL=' in completedPing.stdout)
+    return stdout.decode('ISO-8859-1') if p.returncode == 0 else ''
 
-print(ping(host, timeout))
+print(ping(host))
 
 
 

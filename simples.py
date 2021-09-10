@@ -26,12 +26,12 @@ def ping():
 
     def valor():
 
-    valor = ping()
-    valor.split = valor.split()
-    print(valor.split)
+
+valor = ping()
+valor.split = valor.split()
+print(valor.split)
 
 ping(): Any = (input('Informe o IP: '))
-
 
 
 #with open('log_ping.txt' , 'w', encoding='ISO-8859-1') as arquivo:
