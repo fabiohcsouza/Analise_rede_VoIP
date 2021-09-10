@@ -88,7 +88,7 @@ cabeçalho('Bem vindo!'), print(hora,'  -  ', sys, syss), print(linha(42))
 
 def isso():
     while True:
-        resposta = menu(['TESTE INTEGRIDADE', 'TRACERT', 'TESTE LINK', 'NMAP', 'SAIR'])
+        resposta = menu(['ANALISE DE REDE', 'MULTI-PING', 'SIP-ALG', 'NMAP', 'SAIR'])
 
         if resposta == '1':
             print(portal())
