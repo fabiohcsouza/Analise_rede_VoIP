@@ -1,7 +1,7 @@
 #Bibliotecas
 import time
 import platform
-from teste import ping_portal
+from simples2 import select_portal 
 
 #Comandos
 
@@ -37,14 +37,15 @@ while True:
     resposta = menu(['ANALISE DE REDE', 'MULTI-PING', 'SIP-ALG', 'NMAP', 'SAIR'])
 
     if resposta == '1':
-        ping_portal(None)
-    elif resposta == 2:
+        select_portal()
+        
+    elif resposta == '2':
         print('Opção 2')
-    elif resposta == 3:
+    elif resposta == '3':
         print('Opção 3')
-    elif resposta == 4:
+    elif resposta == '4':
         print('Opção 4')
-    elif resposta == 5:
+    elif resposta == '5':
         cabeçalho('\033[34mSaindo do sistema até logo!\033[m')
         break
     else:
