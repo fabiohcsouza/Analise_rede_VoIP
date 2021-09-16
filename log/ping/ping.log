@@ -1,0 +1,12 @@
+
+Disparando 192.168.1.1 com 0 bytes de dados:
+Resposta de 192.168.1.1: bytes=0 tempo=2ms TTL=64
+Resposta de 192.168.1.1: bytes=0 tempo=1ms TTL=64
+Resposta de 192.168.1.1: bytes=0 tempo=1ms TTL=64
+Resposta de 192.168.1.1: bytes=0 tempo=2ms TTL=64
+
+Estat¡sticas do Ping para 192.168.1.1:
+    Pacotes: Enviados = 4, Recebidos = 4, Perdidos = 0 (0% de
+             perda),
+Aproximar um n£mero redondo de vezes em milissegundos:
+    M¡nimo = 1ms, M ximo = 2ms, M‚dia = 1ms
