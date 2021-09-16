@@ -2,8 +2,7 @@ from tkinter.font import BOLD
 from simples2 import *
 from tkinter import *
 from tkinter import Tk, ttk
-
-
+import tkinter as tk
 
 root = Tk()
 root.title("Analise de rede - Net2Phone")
@@ -13,6 +12,8 @@ root.resizable(False, False)
 
 
 """Variaveis"""
+portais = values=("Portal 1", "Portal 2", "Portal 3", "Portal 4", "Portal 5", "Portal 6", 
+                "Portal 7", "Portal 8", "Portal 9", "Portal 10", "Portal 11", "Portal 12")
 
 """Modulos"""
 
@@ -65,10 +66,14 @@ t4 = ttk.Label(root,
 
 
 """ComboBox"""
-combobox_var = StringVar()
-combobox = ttk.Combobox(root, 
-    textvariable=combobox_var).place(
-        x = 151, y = 45, width=100, height=20)
+combobox_var = tk.StringVar()
+combobox1 = ttk.Combobox(root, 
+    textvariable=combobox_var,)
+combobox1['values'] = portais
+combobox1['state'] = 'readonly'
+combobox1.place(x = 151, y = 45, width=100, height=20)
+combobox1.bind('<<ComboboxSelected>>')
+
 
 t4 = ttk.Label(root, 
     text="-",

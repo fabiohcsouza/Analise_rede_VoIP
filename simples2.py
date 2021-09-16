@@ -1,12 +1,13 @@
 from pathlib import Path
 from program import *
+from main import *
 import tempfile
 import os
 import getpass
-
+import time
 usuario = getpass.getuser()
 
-def dic_portais(entrada):
+def dic_portais():
     """Dicionario de portais com proxy para uso:"""
     portal_entrada = {
         "portal1": "proxy.idtbrasilhosted.com",
@@ -22,9 +23,14 @@ def dic_portais(entrada):
         "portal11": "proxy11.idtbrasilhosted.com",
         "portal12": "proxy12.idtbrasilhosted.com",
     }
+    portal = Combobox1.get()
 
     #entrada = input("Informe o portal: ")
-    portal = portal_entrada[entrada]
+    portal_out = portal_entrada[portal]
+    
+    #path_log()
+    #time.sleep(3)
+    print(portal_out)
  
 def path_log():
     """Validar usuario logado"""
@@ -45,7 +51,7 @@ def file_portal(ip_portal):
     """Portal e TRACERT"""
     with  open (r"C:\Users\{}\Desktop\LOG\ping_portal.txt".format(usuario) , 'w') as  f :
         #Escreve o resultado em um txt
-        f.write (r"ping /n 5000 /l 160 {} >> ping_portal.log && tracert {} >> tracert_portal.log".format(ip_portal, ip_portal))
+        f.write (r"ping /n 5000 /l 160 {} >> ping_portal.log".format(ip_portal))
         f.close()
     
     #Muda o tipo de arquivo para bat
@@ -54,6 +60,22 @@ def file_portal(ip_portal):
 
     #Abre o arquivo 
     os.system("start" r"C:\Users\{}\Desktop\LOG\ping_portal.cmd".format(usuario))
+
+def file_TRACERT(ip_portal):
+
+    usuario = getpass.getuser()
+
+    with  open (r"C:\Users\{}\Desktop\LOG\ping_tracert.txt".format(usuario) , 'w') as  f :
+        #Escreve o resultado em um txt
+        f.write (r"tracert {} >> ping_tracert.txt".format(ip_portal))
+        f.close()
+
+    #Muda o tipo de arquivo para bat
+    p = Path(r"C:\Users\{}\Desktop\LOG\ping_tracert.txt".format(usuario))
+    p.rename(p.with_suffix('.cmd'))
+
+    #Abre o arquivo 
+    os.system("start" r"C:\Users\{}\Desktop\LOG\ping_TRACERT.cmd".format(usuario))
 
 def file_DNS():
 
