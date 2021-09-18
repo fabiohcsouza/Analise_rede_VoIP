@@ -1,8 +1,5 @@
-from tkinter.font import BOLD
 from simples2 import *
 from tkinter import *
-from tkinter import Tk, ttk
-import tkinter as tk
 
 root = Tk()
 root.title("Analise de rede - Net2Phone")
@@ -12,22 +9,66 @@ root.resizable(False, False)
 
 
 """Variaveis"""
-portais = values=("Portal 1", "Portal 2", "Portal 3", "Portal 4", "Portal 5", "Portal 6", 
-                "Portal 7", "Portal 8", "Portal 9", "Portal 10", "Portal 11", "Portal 12")
+
+"""Lista de portais para box"""
+portais = (["Portal 1", "Portal 2", "Portal 3", "Portal 4", "Portal 5", "Portal 6", 
+                "Portal 7", "Portal 8", "Portal 9", "Portal 10", "Portal 11", "Portal 12"])
+
+"""Dicionario de portais com proxy para uso:"""
+portal_entrada = {
+        "Portal 1": "proxy.idtbrasilhosted.com",
+        "Portal 2": "proxy2.idtbrasilhosted.com",
+        "Portal 3": "proxy3.idtbrasilhosted.com",
+        "Portal 4": "proxy4.idtbrasilhosted.com",
+        "Portal 5": "proxy5.idtbrasilhosted.com",
+        "Portal 6": "proxy6.idtbrasilhosted.com",
+        "Portal 7": "proxy7.idtbrasilhosted.com",
+        "Portal 8": "proxy8.idtbrasilhosted.com",
+        "Portal 9": "proxy9.idtbrasilhosted.com",
+        "Portal 10": "proxy10.idtbrasilhosted.com",
+        "Portal 11": "proxy11.idtbrasilhosted.com",
+        "Portal 12": "proxy12.idtbrasilhosted.com",
+    }
 
 """Modulos"""
 
-def op_check(comman):
 
+def error_tk():
+    """Modulo ERRO"""
+    
+    print("Opção invalida, selecione um Portal!")
+
+def op_check(event):
+
+    """Modulo para validação"""
+
+    comman, resp, resp2, resp3, portal_in, portal_out = events()
+    print(comman)
+
+    if portal_in == str :
+
+        respos(comman, resp, resp2, resp3, portal_out)
+    else:
+        error_tk()
+
+def events():
+    comman = botao
     resp = valor_check.get()
     resp2 = valor_check2.get()
     resp3 = valor_check3.get()
+    portal_in = combobox1.get()
+    portal_out = portal_entrada[portal_in]
+    return comman,resp,resp2,resp3,portal_in,portal_out
 
-    if resp == 1 and comman == "s":
+def respos(comman, resp, resp2, resp3, portal_out):
+    if resp == 1 and comman == None:
+        file_TRACERT(portal_out)
+
+    if resp2 == 1 and  comman == None:
+        file_DNS()
+
+    if resp3 == 1 and comman == None:
         sip_alg()
-    else:
-        ()
-
 
 """Icone"""
 root.iconbitmap("images/icon/net2phone.ico")
@@ -66,14 +107,13 @@ t4 = ttk.Label(root,
 
 
 """ComboBox"""
-combobox_var = tk.StringVar()
-combobox1 = ttk.Combobox(root, 
-    textvariable=combobox_var,)
-combobox1['values'] = portais
-combobox1['state'] = 'readonly'
-combobox1.place(x = 151, y = 45, width=100, height=20)
-combobox1.bind('<<ComboboxSelected>>')
 
+combobox_var = tk.StringVar()
+combobox_var.trace('w',op_check)
+combobox1 = ttk.Combobox(root, 
+    textvariable=combobox_var)
+combobox1['values'] = portais
+combobox1.place(x = 151, y = 45, width=100, height=20)
 
 t4 = ttk.Label(root, 
     text="-",
@@ -152,7 +192,9 @@ entrada = ttk.Entry(root,
 botao = ttk.Button(
     root, 
     text="Executar",
-    command = lambda: op_check("s"),).place(
+    command=op_check)
+
+botao.place(
         x = 20, y = 170, width=100, height=20)
 
 """Botao"""
@@ -161,8 +203,6 @@ botao = ttk.Button(
     text="Parar",
     command = lambda: op_check("n"),).place(
         x = 140, y = 170, width=100, height=20)
-
-
 
 root.mainloop()
 
