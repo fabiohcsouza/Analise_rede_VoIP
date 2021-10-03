@@ -1,7 +1,9 @@
 from simples2 import *
 from tkinter import *
+import tkinter as tk
+from tkinter import ttk
 
-root = Tk()
+root = tk.Tk()
 root.title("Analise de rede - Net2Phone")
 root.geometry("800x600+500+100")
 """Define reajuste de janela"""
